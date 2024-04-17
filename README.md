@@ -48,4 +48,4 @@ Az alkalmazás helyi futtatásához kövesse az alábbi lépéseket:
 ## Hozzájárulók
 
 - Cseh Gábor [ Github profil ](https://github.com/csehg0312/)
-- Kaszmán Dániel [ Github profil ] (https://github.com/danielkaszman)
+- Kaszmán Dániel [ Github profil ](https://github.com/danielkaszman)
