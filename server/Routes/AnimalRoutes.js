@@ -10,7 +10,7 @@ router.post("/addAnimal", async (req, res) => {
     Gender: req.body.gender,
     EnclosureID: req.body.enclosureID,
   });
-
+  console.log(newAnimal);
   await newAnimal.save();
 
   res.sendStatus(200);

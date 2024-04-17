@@ -37,16 +37,28 @@
             </table>
         </div>
         <div id="newDatecontainer">
-            <button style="width: 1%;
-  height: 100%;
-  font-size: 1.2em;
-  padding: 0.5em;">+</button>
+            <button @click="toggleForm">{{ visibleForm ? 'Bezár' : 'Kinyit' }}</button>
         </div>
+        <form v-if="visibleForm" id="newData" @submit.prevent="submitForm">
+            <label for="faj">Állatfaj:</label><input id="faj" type="text" v-model="newAnimalSpecies">
+            <br>
+            <label for="nev">Neve:</label><input id="nev" type="text" v-model="newAnimalName">
+            <br>
+            <label for="age">Kora:</label><input id="age" v-model="newAnimalAge"type="number">
+            <br>
+            <label for="gender">Neme:</label>
+            <select id="gender"v-model="newAnimalGender">
+                <option value="Hím">Hím</option>
+                <option value="Nőstény">Nőstény</option>  
+            </select>
+            <br>
+            <input type="submit" value="Hozzáad">
+        </form>
     </div>
 </template>
 
 <script>
-// import { dotmap } from 'dot-prop-immutable'
+import adderRoutes from '../js/routes'
 export default {
     name: 'AnimalsComponent',
     props: {
@@ -55,12 +67,34 @@ export default {
             required:true
         }
     },
+    data() {
+        return {
+            visibleForm: false,
+            newAnimalName: "",
+            newAnimalAge: 0,
+            newAnimalGender: "",
+            newAnimalSpecies: ""
+        }
+    },
     methods: {
-        printData() {
-            console.log(this.animals.value[0].Name)
+        // printData() {
+        //     console.log(this.animals.value[0].Name)
+        // },
+        toggleForm() {
+            this.visibleForm = !this.visibleForm;
         },
+        submitForm() {
+            adderRoutes.addAnimals(this.newAnimalName, this.newAnimalAge, this.newAnimalSpecies, this.newAnimalGender)
+            
+            // console.table(newAnimal);
+            this.visibleForm = false;
+            this.newAnimalName = "";
+            this.newAnimalAge = 0;
+            this.newAnimalGender = "";
+            },
+        },
+
     }
-}
 </script>
 
 <style scoped>

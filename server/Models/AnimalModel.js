@@ -19,7 +19,7 @@ const AnimalSchema = new mongoose.Schema({
   },
   EnclosureID: {
     type: Number,
-    required: true,
+    required: false,
   },
 });
 

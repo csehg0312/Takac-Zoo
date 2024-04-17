@@ -8,7 +8,9 @@
   import VisitorsComponent from './components/VisitorsComponent.vue'
   import ZookeepersComponent from './components/ZookeepersComponent.vue'
   import { ref } from 'vue'
-  import getRoutes from './js/routes'
+  // import getRoutes from './js/routes'
+  // import axios from 'axios'
+  import api from './js/api'
 
   const items = { 
     animals: ref([]),
@@ -17,42 +19,36 @@
     medical_records: ref([]),
     veterinars: ref([]),
     visitors: ref([]),
-    zookeepers: ref([])
+    zookeepers: ref([]),
   }
 
   // const axiosInstance = Axios.create({
   //   baseURL: 'http://localhost:3001' 
   // })
 
-  const fetchData = async () => {
-    const [
-        animalsResponse,
-        enclosuresResponse,
-        feedingsResponse,
-        medicalRecordsResponse,
-        veterinarsResponse,
-        visitorsResponse,
-        zookeepersResponse
-      ] = await Promise.all([
-      getRoutes.getAnimals(),
-      getRoutes.getEnclosures(),
-      getRoutes.getFeedings(),
-      getRoutes.getMedicalRecords(),
-      getRoutes.getVeterinars(),
-      getRoutes.getVisitors(),
-      getRoutes.getZookeepers()
-      ])
+  async function fetchData() {
+    const animalResponse = await api.get('/AnimalRoutes/getAnimals')
+    items.animals.value = animalResponse.data;
+    // console.table(items.animals.value)
+    
+    const enclosureResponse = await api.get('/EnclosureRoutes/getEnclosures')
+    items.enclosures.value = enclosureResponse.data;
 
-      items.animals.value = animalsResponse.data
-      // console.log(items.animals.value)
-      items.enclosures.value = enclosuresResponse.data
-      items.feedings.value =feedingsResponse.data
-      items.medical_records.value = medicalRecordsResponse.data
-      items.veterinars.value = veterinarsResponse.data
-      // console.table(veterinarsResponse.data)
-      items.visitors.value = visitorsResponse.data
-      items.zookeepers.value = zookeepersResponse.data
-      // console.table(items.zookeepers.value)
+    const feedingResponse = await api.get('/FeedingRoutes/getFeedings')
+    items.feedings.value = feedingResponse.data;
+
+    const medicalRecordsResponse = await api.get('/MedicalRecordsRoutes/getMedicalRecords')
+    items.medical_records.value = medicalRecordsResponse.data;
+
+    const veterinarResponse = await api.get('/VeteritarianRoutes/getVeteritarians')
+    items.veterinars.value = veterinarResponse.data;
+
+    const visitorResponse = await api.get('/VisitorRoutes/getVisitors')
+    items.visitors.value = visitorResponse.data;
+
+    const zookeeperResponse = await api.get('/ZookeeperRoutes/getZookeepers')
+    items.zookeepers.value = zookeeperResponse.data;
+
   }
 
   fetchData()

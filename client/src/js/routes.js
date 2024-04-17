@@ -34,9 +34,15 @@ const getRoutes = {
 
 
 const adderRoutes = {
-    addAnimals: (Name,Age,species,gender) => {
-        console.log('Fetching animals...')
-        return api.post('/AnimalRoutes/addAnimal', {newData})
+    addAnimals: (name,age,species,gender) => {
+        // console.log('Fetching animals...')
+        console.log(name, age, species, gender)
+        return api.post('/AnimalRoutes/addAnimal', {
+          species,
+          name,
+          age,
+          gender,
+        })
     },
     addEnclosures: () => {
         console.log('Fetching enclosures...')
@@ -64,4 +70,4 @@ const adderRoutes = {
     }
 } 
 
-export default getRoutes
+export default (getRoutes, adderRoutes)
