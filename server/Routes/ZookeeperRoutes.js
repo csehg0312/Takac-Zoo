@@ -25,4 +25,10 @@ router.get("/getZookeepers", async (req, res) => {
   res.send(foundZookeepers);
 });
 
+router.delete("/deleteZookeeper/:id", async (req, res) => {
+  await ZookeeperModel.findByIdAndDelete(req.params.id);
+
+  res.send("Zookeeper deleted!");
+});
+
 module.exports = router;

@@ -26,4 +26,10 @@ router.get("/getEnclosures", async (req, res) => {
   res.send(foundEnclosures);
 });
 
+router.delete("/deleteEnclosure/:id", async (req, res) => {
+  await EnclosureModel.findByIdAndDelete(req.params.id);
+
+  res.send("Enclosure deleted!");
+});
+
 module.exports = router;

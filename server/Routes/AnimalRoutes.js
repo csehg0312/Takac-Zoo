@@ -27,4 +27,10 @@ router.get("/getAnimals", async (req, res) => {
   res.send(foundAnimals);
 });
 
+router.delete("/deleteAnimal/:id", async (req, res) => {
+  await AnimalModel.findByIdAndDelete(req.params.id);
+
+  res.send("Animal deleted!");
+});
+
 module.exports = router;
