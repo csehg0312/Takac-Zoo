@@ -2,43 +2,63 @@
 <template>
     <div>
       <h2>Feedings</h2>
-
-      <table>
-                <tr>
-                    <td>
-                        <b>
-                            Etetés időpontja (Nap)
-                        </b>
-                    </td>
-                    <td>
-                        <b>
-                            Etetés időpontja (Óra)
-                        </b>
-                    </td>
-                    <td>
-                        <b>
-                            Etetési jegyzet
-                        </b>
-                    </td>
-                </tr>
-                <tr v-for="object in this.feedings.value">
-                    <td>{{ formatDate(object.FeedingDate) }} </td>
-                    <td>{{ formatTime(object.FeedingDate) }} </td>
-                    <td>{{ object.FeedingNote }} </td>
-                </tr>
-                
-            </table>
-
-      <!-- <table v-for="object in this.feedings.value">
-            
-            <tr>Etetés időpontja(Nap): {{ formatDate(object.FeedingDate) }}</tr>
-            <tr>Etetés időpontja(Óra): {{ formatTime(object.FeedingDate) }}</tr>
-            <tr>Etetési jegyzet: {{ object.FeedingNote }}</tr>
-
-        </table> -->
-
-      <!-- Display and edit animal data here -->
     </div>
+
+    <div id="container">
+        <div id="feedingContainer">
+            <table>
+                    <tr>
+                        <td>
+                            <b>
+                                Etetés időpontja (Nap)
+                            </b>
+                        </td>
+                        <td>
+                            <b>
+                                Etetés időpontja (Óra)
+                            </b>
+                        </td>
+                        <td>
+                            <b>
+                                Etetési jegyzet
+                            </b>
+                        </td>
+                    </tr>
+                    <tr v-for="object in this.feedings.value">
+                        <td>{{ formatDate(object.FeedingDate) }} </td>
+                        <td>{{ formatTime(object.FeedingDate) }} </td>
+                        <td>{{ object.FeedingNote }} </td>
+                    </tr>
+        
+                </table>
+        </div>
+
+    <div id="newDataButton">
+        <button @click="toggleForm">{{ visibleForm ? 'Bezár' : 'Kinyit' }}</button>
+    </div>
+
+    <!-- form start -->
+    <form v-if="visibleForm" id="newData" @submit.prevent="submitForm">
+        <label for="faj">Megnevezése: </label><input id="faj" type="text" v-model="newEncosureName">
+        <br>
+        <label for="nev">Mérete: </label><input id="nev" type="number" v-model="newEnclosureSize">
+        <br>
+        <label for="gender">Élőhely típusa: </label>
+        <select id="gender"v-model="newEnclosureType">
+            <option value="Hím">Szavanna</option>
+            <option value="Nőstény">Arktikus</option>
+            <option value="Nőstény">Erdő</option>
+            <option value="Nőstény">Mező</option>
+            <option value="Nőstény">Trópusi</option>
+            <option value="Nőstény">Tengeri</option>
+            <option value="Nőstény">Akvárium</option>
+        </select>
+        <br>
+        <input type="submit" value="Hozzáad">
+    </form>
+
+    </div>
+
 </template>
 
 <script>

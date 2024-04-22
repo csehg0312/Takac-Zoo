@@ -115,4 +115,9 @@ export default {
  
         gap: 0px 0px; 
     }
+
+    input, select{
+        background-color: #f9f9f9;
+        color: #1a1a1a;
+    }
 </style>
