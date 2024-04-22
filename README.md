@@ -35,10 +35,13 @@ Az alkalmazás helyi futtatásához kövesse az alábbi lépéseket:
 1. Klónozza ezt a repository-t a helyi gépére.
 2. Győződjön meg róla, hogy telepítve van-e a Node.js és a MongoDB.
 3. Navigáljon a projekt könyvtárába a terminálban.
-4. Telepítse a függőségeket a `npm install` parancs futtatásával.
-5. Indítsa el a MongoDB szervert.
-6. Futtassa az alkalmazást a `npm start` paranccsal.
-7. Az alkalmazáshoz a webböngészőjében a `http://localhost:PORT` címen férhet hozzá, ahol a `PORT` a beállított portszám az alkalmazás számára.
+4. Nyissa meg a `server` mappát terminálban.
+5. Telepítse a függőségeket a `npm install` parancs futtatásával.
+6. Futtassa az szervert az `npm start` paranccsal.
+7. Nyissa meg a `client` mappát terminálban.
+8. Telepítse a függőségeket a `npm install` parancs futtatásával.
+9. Futtassa az frontendet a `npm run dev` paranccsal.
+10. Az alkalmazáshoz a webböngészőjében a `http://localhost:PORT` címen férhet hozzá, ahol a `PORT` a beállított portszám az alkalmazás számára.
 
 ## Használat
 
