@@ -89,7 +89,7 @@ export default {
             this.visibleForm = !this.visibleForm;
         },
         async submitForm() {
-            adderRoutes.addAnimals(this.newAnimalName, this.newAnimalAge, this.newAnimalSpecies, this.newAnimalGender)
+            adderRoutes.addAnimal(this.newAnimalName, this.newAnimalAge, this.newAnimalSpecies, this.newAnimalGender)
             
             // console.table(newAnimal);
             this.visibleForm = false;

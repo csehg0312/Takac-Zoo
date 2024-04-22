@@ -34,7 +34,7 @@ const getRoutes = {
 
 
 const adderRoutes = {
-    addAnimals: (name,age,species,gender) => {
+    addAnimal: (name,age,species,gender) => {
         // console.log('Fetching animals...')
         console.log(name, age, species, gender)
         return api.post('/AnimalRoutes/addAnimal', {
@@ -44,29 +44,34 @@ const adderRoutes = {
           gender,
         })
     },
-    addEnclosures: () => {
-        console.log('Fetching enclosures...')
-        return api.get('/EnclosureRoutes/addEnclosures')
+    addEnclosure: (name,size,type) => {
+      console.log(name,size,type)
+      return api.post('/EnclosureRoutes/addEnclosure', {
+        name,
+        size,
+        type,
+      })
+        
     },
     addFeedings: () => {
         console.log('Fetching feedings...')
-        return api.get('/FeedingRoutes/addFeedings')
+        return api.get('/FeedingRoutes/addFeeding')
     },
     addMedicalRecords: () => {
         console.log('Fetching medical records...')
-        return api.get('/MedicalRecordsRoutes/addMedicalRecords')
+        return api.get('/MedicalRecordsRoutes/addMedicalRecord')
     },
     addVeterinars: () => {
         console.log('Fetching veterinars...')
-        return api.get('/VeteritarianRoutes/addVeteritarians')
+        return api.get('/VeteritarianRoutes/addVeteritarian')
     },
     addVisitors: () => {
         console.log('Fetching visitors...')
-        return api.get('/VisitorRoutes/addVisitors')
+        return api.get('/VisitorRoutes/addVisitor')
     },
     addZookeepers: () => {
         console.log('Fetching zookeepers...')
-        return api.get('/ZookeeperRoutes/addZookeepers')
+        return api.get('/ZookeeperRoutes/addZookeeper')
     }
 } 
 

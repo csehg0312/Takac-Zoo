@@ -25,7 +25,7 @@
                 </tr>
                 <tr v-for="object in this.enclosures.value">
                     <td>{{ object.EnclosureName }} </td>
-                    <td>{{ object.Size }} négyzetméter</td>
+                    <td>{{ object.Size }} </td>
                     <td>{{ object.HabitatType }} </td>
                     <button @click="deleteReq(object._id)">x</button>
                 </tr>
@@ -40,19 +40,19 @@
 
         <!-- form start -->
         <form v-if="visibleForm" id="newData" @submit.prevent="submitForm">
-            <label for="nev">Megnevezése: </label><input id="faj" type="text" v-model="newEncosureName">
+            <label for="nev">Megnevezése: </label><input id="nev" type="text" v-model="newEnclosureName" >
             <br>
-            <label for="size">Mérete: </label><input id="nev" type="number" v-model="newEnclosureSize">
+            <label for="size">Mérete: </label><input id="size" type="text" v-model="newEnclosureSize">
             <br>
             <label for="envtype">Élőhely típusa: </label>
             <select id="envtype"v-model="newEnclosureType">
-                <option value="Hím">Szavanna</option>
-                <option value="Nőstény">Arktikus</option>
-                <option value="Nőstény">Erdő</option>
-                <option value="Nőstény">Mező</option>
-                <option value="Nőstény">Trópusi</option>
-                <option value="Nőstény">Tengeri</option>
-                <option value="Nőstény">Akvárium</option>
+                <option>Szavanna</option>
+                <option>Arktikus</option>
+                <option>Erdő</option>
+                <option>Mező</option>
+                <option>Trópusi</option>
+                <option>Tengeri</option>
+                <option>Akvárium</option>
             </select>
             <br>
             <input type="submit" value="Hozzáad">
@@ -77,7 +77,7 @@ export default {
             return {
                 visibleForm: false,
                 newEncosureName: "",
-                newEnclosureSize: 0,
+                newEnclosureSize: "",
                 newEnclosureType: ""
             }
         },
@@ -85,7 +85,7 @@ export default {
         methods: {
 
             deleteReq(id){
-                api.delete(`/AnimalRoutes/deleteAnimal/${id}`).then((response) => {
+                api.delete(`/EnclosureRoutes/deleteEnclosure/${id}`).then((response) => {
                     console.log(response.data)
                 })
             },
@@ -95,12 +95,12 @@ export default {
             },
 
             async submitForm() {
-                adderRoutes.addEnclosures(this.newEnclosureName, this.newEnclosureSize, this.newEnclosureType)
+                adderRoutes.addEnclosure(this.newEnclosureName, this.newEnclosureSize, this.newEnclosureType)
                 
                 // console.table(newAnimal);
                 this.visibleForm = false;
                 this.newEnclosureName = "";
-                this.newEnclosureSize = 0;
+                this.newEnclosureSize = "";
                 this.newEnclosureType = "";
             },
         },

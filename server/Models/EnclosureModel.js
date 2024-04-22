@@ -9,10 +9,6 @@ const EnclosureSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  TemperatureInCelsius: {
-    type: Number,
-    required: true,
-  },
   HabitatType: {
     type: String,
     required: true,

@@ -22,10 +22,6 @@
     zookeepers: ref([]),
   }
 
-  // const axiosInstance = Axios.create({
-  //   baseURL: 'http://localhost:3001' 
-  // })
-
   async function fetchData() {
     const animalResponse = await api.get('/AnimalRoutes/getAnimals')
     items.animals.value = animalResponse.data;

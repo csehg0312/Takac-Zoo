@@ -6,11 +6,12 @@ router.post("/addEnclosure", async (req, res) => {
   const newEnclosure = new EnclosureModel({
     EnclosureName: req.body.name,
     Size: req.body.size,
-    TemperatureInCelsius: req.body.temperature,
     HabitatType: req.body.type,
   });
 
+  console.log(newEnclosure);
   await newEnclosure.save();
+
 
   res.sendStatus(200);
 });
