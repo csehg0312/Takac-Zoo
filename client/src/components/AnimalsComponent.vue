@@ -28,10 +28,11 @@
                     </td>
                 </tr>
                 <tr v-for="object in this.animals.value">
-                    <td>{{ object.Species }} </td>
+                    <td>{{ object.Species }} </td> 
                     <td>{{ object.Name }} </td>
                     <td>{{ object.Age }} </td>
                     <td>{{ object.Gender }} </td>
+                    <button @click="deleteReq(object._id)">x</button>
                 </tr>
                 
             </table>
@@ -59,6 +60,7 @@
 
 <script>
 import adderRoutes from '../js/routes'
+import api from '../js/api.js'
 export default {
     name: 'AnimalsComponent',
     props: {
@@ -77,13 +79,16 @@ export default {
         }
     },
     methods: {
-        // printData() {
-        //     console.log(this.animals.value[0].Name)
-        // },
+
+        deleteReq(id){
+            api.delete(`/AnimalRoutes/deleteAnimal/${id}`).then((response) => {
+                console.log(response.data)
+            })
+        },
         toggleForm() {
             this.visibleForm = !this.visibleForm;
         },
-        submitForm() {
+        async submitForm() {
             adderRoutes.addAnimals(this.newAnimalName, this.newAnimalAge, this.newAnimalSpecies, this.newAnimalGender)
             
             // console.table(newAnimal);
