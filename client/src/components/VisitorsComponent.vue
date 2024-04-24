@@ -46,6 +46,13 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      visibleForm: false,
+      newAge: "",
+      newTicketType: "",
+    };
+  },
   methods: {
     formatDate(dateString) {
       const date = new Date(dateString);
@@ -60,12 +67,12 @@ export default {
       return new Intl.DateTimeFormat("en-US", options).format(utcDate);
     },
     async submitForm() {
-      adderRoutes.addVisitor(this.age, this.ticketType);
+      adderRoutes.addVisitor(this.newAge, this.newTicketType);
 
       // console.table(newVisitor);
       this.visibleForm = false;
-      this.age = "";
-      this.ticketType = "";
+      this.newAge = "";
+      this.newTicketType = "";
     },
   },
 };

@@ -42,19 +42,27 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      visibleForm: false,
+      newName: "",
+      newSpecialization: "",
+      newYearsOfExperience: "",
+    };
+  },
   methods: {
     async submitForm() {
       adderRoutes.addVeteritarian(
-        this.name,
-        this.specialization,
-        this.yearsOfExperience
+        this.newName,
+        this.newSpecialization,
+        this.newYearsOfExperience
       );
 
       // console.table(newVeteritarian);
       this.visibleForm = false;
-      this.name = "";
-      this.specialization = "";
-      this.yearsOfExperience = "";
+      this.newName = "";
+      this.newSpecialization = "";
+      this.newYearsOfExperience = "";
     },
   },
 };

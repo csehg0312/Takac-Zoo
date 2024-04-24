@@ -42,6 +42,14 @@ export default {
                 }
             },
     },
+    data() {
+    return {
+      visibleForm: false,
+      newName: "",
+      newSpecialization: "",
+      newYearsOfExperience: "",
+    };
+  },
     methods: {
         deleteReq(id) {
           api.delete(`/ZookeeperRoutes/deleteZookeeper/${id}`).then((response) => {
@@ -49,13 +57,13 @@ export default {
           });
         },
         async submitForm() {
-        adderRoutes.addZookeeper(this.name, this.specialization, this.yearsOfExperience);
+        adderRoutes.addZookeeper(this.newName, this.newSpecialization, this.newYearsOfExperience);
 
         // console.table(newZookeeper);
         this.visibleForm = false;
-        this.name = "";
-        this.specialization = "";
-        this.yearsOfExperience = "";
+        this.newName = "";
+        this.newSpecialization = "";
+        this.newYearsOfExperience = "";
     },
     }
 </script>

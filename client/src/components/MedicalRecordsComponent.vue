@@ -45,22 +45,33 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      visibleForm: false,
+      newAnimalID: "",
+      newVeteritarianID: "",
+      newDiagnosis: "",
+      newTreatment: "",
+      newMedication: "",
+    };
+  },
   metods: {
     async submitForm() {
       adderRoutes.addMedicalRecord(
-        this.animalID,
-        this.veteritarianID,
-        this.diagnosis,
-        this.treatment,
-        this.medication
+        this.newAnimalID,
+        this.newVeteritarianID,
+        this.newDiagnosis,
+        this.newTreatment,
+        this.newMedication
       );
 
       // console.table(newMedicalRecord);
       this.visibleForm = false;
-      this.animalID = "";
+      this.newAnimalID = "";
       this.veteritarianID = "";
-      this.diagnosis = "";
-      this.treatment = "";
+      this.newDiagnosis = "";
+      this.newTreatment = "";
+      this.newMedication = "";
     },
   },
 };

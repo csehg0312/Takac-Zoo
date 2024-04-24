@@ -65,6 +65,14 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      visibleForm: false,
+      newAnimalID: "",
+      newKeeperID: "",
+      newNote: "",
+    };
+  },
   methods: {
     formatDate(dateString) {
       const date = new Date(dateString);
@@ -79,13 +87,13 @@ export default {
       return new Intl.DateTimeFormat("en-US", options).format(utcDate);
     },
     async submitForm() {
-      adderRoutes.addFeeding(this.animalID, this.keeperID, this.note);
+      adderRoutes.addFeeding(this.newAnimalID, this.newKeeperID, this.newNote);
 
       // console.table(newFeeding);
       this.visibleForm = false;
-      this.animalID = "";
-      this.keeperID = "";
-      this.note = "";
+      this.newAnimalID = "";
+      this.newKeeperID = "";
+      this.newNote = "";
     },
   },
 };
