@@ -1,29 +1,23 @@
 <!-- components/Animals.vue -->
 <template>
-    <div>
-      <h2>MedicalRecords</h2>
+  <div>
+    <h2>MedicalRecords</h2>
 
-      <table>
-                <tr>
-                    <td>
-                        <b>
-                            Diagnózis
-                        </b>
-                    </td>
-                    <td>
-                        <b>
-                            Kezelés
-                        </b>
-                    </td>
-                </tr>
-                <tr v-for="object in this.medical_records.value">
-                    <td>{{ object.Diagnosis }} </td>
-                    <td>{{ object.Treatment }} </td>
-
-                </tr>
-                
-            </table>
-      <!-- <table v-for="object in this.medical_records.value">
+    <table>
+      <tr>
+        <td>
+          <b> Diagnózis </b>
+        </td>
+        <td>
+          <b> Kezelés </b>
+        </td>
+      </tr>
+      <tr v-for="object in this.medical_records.value">
+        <td>{{ object.Diagnosis }}</td>
+        <td>{{ object.Treatment }}</td>
+      </tr>
+    </table>
+    <!-- <table v-for="object in this.medical_records.value">
             
             <tr>
                 <b>
@@ -39,22 +33,39 @@
             </tr>
            
         </table> -->
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
-name: 'MedicalRecordsComponent',
-props: {
+  name: "MedicalRecordsComponent",
+  props: {
     medical_records: {
-        type: Object,
-        required:true
-    }
+      type: Object,
+      required: true,
     },
-}
+  },
+  metods: {
+    async submitForm() {
+      adderRoutes.addMedicalRecord(
+        this.animalID,
+        this.veteritarianID,
+        this.diagnosis,
+        this.treatment,
+        this.medication
+      );
+
+      // console.table(newMedicalRecord);
+      this.visibleForm = false;
+      this.animalID = "";
+      this.veteritarianID = "";
+      this.diagnosis = "";
+      this.treatment = "";
+    },
+  },
+};
 </script>
 
 <style scoped>
 /* Component-specific styles */
 </style>
-  
