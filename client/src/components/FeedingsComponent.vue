@@ -17,11 +17,14 @@
           <td>
             <b> Etetési jegyzet </b>
           </td>
+          <td><b>Ki etette</b></td>
+          <td><b>Kit etetett</b></td>
         </tr>
         <tr v-for="object in this.feedings.value">
           <td>{{ formatDate(object.FeedingDate) }}</td>
           <td>{{ formatTime(object.FeedingDate) }}</td>
           <td>{{ object.FeedingNote }}</td>
+          <td>{{}}</td>
         </tr>
       </table>
     </div>
