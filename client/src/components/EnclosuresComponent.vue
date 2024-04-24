@@ -1,7 +1,7 @@
 <!-- components/Animals.vue -->
 <template>
   <div>
-    <h2>Enclosures</h2>
+    <h2>Látogatható ketrecek</h2>
   </div>
   <div id="container">
     <div id="enclosureContainer">

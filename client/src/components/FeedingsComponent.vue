@@ -1,7 +1,7 @@
 <!-- components/Animals.vue -->
 <template>
   <div>
-    <h2>Feedings</h2>
+    <h2>Etetések</h2>
   </div>
 
   <div id="container">

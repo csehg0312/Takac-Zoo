@@ -58,9 +58,20 @@ const adderRoutes = {
       note,
     });
   },
-  addMedicalRecord: () => {
-    console.log("Fetching medical records...");
-    return api.get("/MedicalRecordsRoutes/addMedicalRecord");
+  addMedicalRecord: (
+    animalID,
+    veteritarianID,
+    diagnosis,
+    treatment,
+    medication
+  ) => {
+    return api.post("/MedicalRecordRoutes/addMedicalRecord", {
+      animalID,
+      veteritarianID,
+      diagnosis,
+      treatment,
+      medication,
+    });
   },
   addVeterinar: () => {
     console.log("Fetching veterinars...");

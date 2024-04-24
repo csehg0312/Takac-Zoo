@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Animals</h2>
+    <h2>Állatkert lakói</h2>
   </div>
   <div id="container">
     <div id="animalContainer">

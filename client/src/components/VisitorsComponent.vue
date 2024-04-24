@@ -1,39 +1,31 @@
 <!-- components/Animals.vue -->
 <template>
-  <div>
-    <h2>Visitors</h2>
-    <!-- Display and edit animal data here -->
-
-    <table>
-      <tr>
-        <td>
-          <b> Látogatás időpontja (Nap) </b>
-        </td>
-        <td>
-          <b> Látogatás időpontja (Óra) </b>
-        </td>
-        <td>
-          <b> Kor </b>
-        </td>
-        <td>
-          <b> Jegy típusa </b>
-        </td>
-      </tr>
-      <tr v-for="object in this.visitors.value">
-        <td>{{ formatDate(object.VisitingDate) }}</td>
-        <td>{{ formatTime(object.VisitingDate) }}</td>
-        <td>{{ object.Age }}</td>
-        <td>{{ object.TicketType }}</td>
-      </tr>
-    </table>
-    <!-- <table v-for="object in this.visitors.value">
-            
-            <tr>Látogatás időpontja (Nap): {{ this.formatDate(object.VisitingDate) }}</tr>
-            <tr>Látogatás időpontja (Óra): {{ this.formatTime(object.VisitingDate) }}</tr>
-           <tr>Kor: {{ object.Age }}</tr>
-           <tr>Jegy típusa: {{ object.TicketType }}</tr>  
-
-        </table> -->
+  <h2>Látogatók listája</h2>
+  <div id="container">
+    <div id="visitorsContainer">
+      <table>
+        <tr>
+          <td>
+            <b> Látogatás időpontja (Nap) </b>
+          </td>
+          <td>
+            <b> Látogatás időpontja (Óra) </b>
+          </td>
+          <td>
+            <b> Kor </b>
+          </td>
+          <td>
+            <b> Jegy típusa </b>
+          </td>
+        </tr>
+        <tr v-for="object in this.visitors.value">
+          <td>{{ formatDate(object.VisitingDate) }}</td>
+          <td>{{ formatTime(object.VisitingDate) }}</td>
+          <td>{{ object.Age }}</td>
+          <td>{{ object.TicketType }}</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -79,20 +71,20 @@ export default {
 </script>
 
 <style scoped>
-  #container {
-    display: grid;
+#container {
+  display: grid;
 
-    gap: 0px 0px;
-  }
+  gap: 0px 0px;
+}
 
-  #visitorsContainer {
-    display: grid;
+#visitorsContainer {
+  display: grid;
 
-    gap: 0px 0px;
-  }
-  input,
-  select {
-    background-color: #f9f9f9;
-    color: #1a1a1a;
-  }
+  gap: 0px 0px;
+}
+input,
+select {
+  background-color: #f9f9f9;
+  color: #1a1a1a;
+}
 </style>

@@ -1,6 +1,6 @@
 <!-- components/Animals.vue -->
 <template>
-  <h2>MedicalRecords</h2>
+  <h2>Orvosi kivizsgálások</h2>
   <div id="container">
     <div id="medicalrecContainer">
       <table>
@@ -11,17 +11,58 @@
           <td>
             <b> Kezelés </b>
           </td>
+          <td>
+            <b>Felírva </b>
+          </td>
         </tr>
         <tr v-for="object in this.medical_records.value">
           <td>{{ object.Diagnosis }}</td>
           <td>{{ object.Treatment }}</td>
+          <td>{{ object.Medication }}</td>
         </tr>
       </table>
     </div>
+    <!-- new data  -->
+    <!-- <button type="button"></button> -->
+    <div id="newDataButton">
+      <button @click="toggleForm">
+        {{ visibleForm ? "Bezár" : "Új" }}
+      </button>
+    </div>
+    <!-- form  -->
+    <form v-if="visibleForm" id="newData" @submit.prevent="submitForm">
+      <label for="diagnosis">Diagnózis: </label
+      ><textarea id="diagnosis" v-model="newDiagnosis" />
+      <br />
+      <label for="treatment">Kezelés: </label
+      ><textarea id="treatment" v-model="newTreatment" />
+      <br />
+      <label for="medication">Felírva: </label>
+      <input id="medication" type="text" v-model="newMedication" />
+      <br />
+
+      <label for="veteritarian">Kezelő orvos: </label>
+      <select id="veteritarian" v-model="this.newVeteritarianID">
+        <option v-for="object in this.veteritarianArray" :value="object._id">
+          Dr. {{ object.Name }}
+        </option>
+      </select>
+      <br />
+      <label for="animals">Állatkert lakó: </label>
+      <select id="animals" v-model="this.newAnimalID">
+        <option v-for="object in this.animalsArray" :value="object._id">
+          {{ object.Name }}
+        </option>
+      </select>
+      <br />
+      <input type="submit" value="Hozzáad" />
+    </form>
   </div>
 </template>
 
 <script>
+import api from "../js/api";
+import adderRoutes from "../js/routes";
 export default {
   name: "MedicalRecordsComponent",
   props: {
@@ -38,9 +79,21 @@ export default {
       newDiagnosis: "",
       newTreatment: "",
       newMedication: "",
+      animalsArray: Array,
+      veteritarianArray: Array,
     };
   },
-  metods: {
+  methods: {
+    toggleForm() {
+      this.visibleForm = !this.visibleForm;
+      api.get("/AnimalRoutes/getAnimals").then((response) => {
+        this.animalsArray = response.data;
+      });
+      api.get("VeteritarianRoutes/getVeteritarians").then((response) => {
+        // console.log(response.data);
+        this.veteritarianArray = response.data;
+      });
+    },
     async submitForm() {
       adderRoutes.addMedicalRecord(
         this.newAnimalID,
@@ -75,6 +128,7 @@ export default {
   gap: 0px 0px;
 }
 input,
+textarea,
 select {
   background-color: #f9f9f9;
   color: #1a1a1a;
