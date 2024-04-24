@@ -1,38 +1,23 @@
 <!-- components/Animals.vue -->
 <template>
-  <div>
-    <h2>MedicalRecords</h2>
-
-    <table>
-      <tr>
-        <td>
-          <b> Diagnózis </b>
-        </td>
-        <td>
-          <b> Kezelés </b>
-        </td>
-      </tr>
-      <tr v-for="object in this.medical_records.value">
-        <td>{{ object.Diagnosis }}</td>
-        <td>{{ object.Treatment }}</td>
-      </tr>
-    </table>
-    <!-- <table v-for="object in this.medical_records.value">
-            
-            <tr>
-                <b>
-                    Diagnózis:
-                </b> 
-                {{ object.Diagnosis }}
-            </tr>
-           <tr>
-            <b>
-                Kezelés: 
-            </b>
-            {{ object.Treatment }}
-            </tr>
-           
-        </table> -->
+  <h2>MedicalRecords</h2>
+  <div id="container">
+    <div id="medicalrecContainer">
+      <table>
+        <tr>
+          <td>
+            <b> Diagnózis </b>
+          </td>
+          <td>
+            <b> Kezelés </b>
+          </td>
+        </tr>
+        <tr v-for="object in this.medical_records.value">
+          <td>{{ object.Diagnosis }}</td>
+          <td>{{ object.Treatment }}</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -78,5 +63,20 @@ export default {
 </script>
 
 <style scoped>
-/* Component-specific styles */
+#container {
+  display: grid;
+
+  gap: 0px 0px;
+}
+
+#medicalrecContainer {
+  display: grid;
+
+  gap: 0px 0px;
+}
+input,
+select {
+  background-color: #f9f9f9;
+  color: #1a1a1a;
+}
 </style>

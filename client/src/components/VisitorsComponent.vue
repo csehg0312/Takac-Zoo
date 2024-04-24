@@ -79,5 +79,20 @@ export default {
 </script>
 
 <style scoped>
-/* Component-specific styles */
+  #container {
+    display: grid;
+
+    gap: 0px 0px;
+  }
+
+  #visitorsContainer {
+    display: grid;
+
+    gap: 0px 0px;
+  }
+  input,
+  select {
+    background-color: #f9f9f9;
+    color: #1a1a1a;
+  }
 </style>

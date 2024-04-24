@@ -29,7 +29,7 @@
 
     <div id="newDataButton">
       <button @click="toggleForm">
-        {{ visibleForm ? "Bezár" : "Kinyit" }}
+        {{ visibleForm ? "Bezár" : "Új" }}
       </button>
     </div>
 

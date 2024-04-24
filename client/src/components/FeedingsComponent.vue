@@ -28,27 +28,27 @@
 
     <div id="newDataButton">
       <button @click="toggleForm">
-        {{ visibleForm ? "Bezár" : "Kinyit" }}
+        {{ visibleForm ? "Bezár" : "Új" }}
       </button>
     </div>
 
     <!-- form start -->
     <form v-if="visibleForm" id="newData" @submit.prevent="submitForm">
-      <label for="faj">Megnevezése: </label
-      ><input id="faj" type="text" v-model="newEncosureName" />
+      <label for="note">Jegyzet</label
+      ><textarea v-model="this.newNote" id="note" required></textarea>
       <br />
-      <label for="nev">Mérete: </label
-      ><input id="nev" type="number" v-model="newEnclosureSize" />
+      <label for="animal">Melyik Állat kapott?</label>
+      <select v-model="this.newAnimalID" id="animal">
+        <option v-for="object in this.animalsArray" :value="object._id">
+          {{ object.Name }}
+        </option>
+      </select>
       <br />
-      <label for="gender">Élőhely típusa: </label>
-      <select id="gender" v-model="newEnclosureType">
-        <option value="Hím">Szavanna</option>
-        <option value="Nőstény">Arktikus</option>
-        <option value="Nőstény">Erdő</option>
-        <option value="Nőstény">Mező</option>
-        <option value="Nőstény">Trópusi</option>
-        <option value="Nőstény">Tengeri</option>
-        <option value="Nőstény">Akvárium</option>
+      <label for="keeper">Ki etette?</label>
+      <select v-model="this.newKeeperID" id="keeper">
+        <option v-for="object in this.keepersArray" :value="object._id">
+          {{ object.Name }}
+        </option>
       </select>
       <br />
       <input type="submit" value="Hozzáad" />
@@ -57,6 +57,8 @@
 </template>
 
 <script>
+import adderRoutes from "../js/routes";
+import api from "../js/api";
 export default {
   name: "FeedingsComponent",
   props: {
@@ -69,11 +71,26 @@ export default {
     return {
       visibleForm: false,
       newAnimalID: "",
+      selectedAnimal: String,
+      selectedKeeper: String,
       newKeeperID: "",
       newNote: "",
+      keepersArray: Array,
+      animalsArray: Array,
     };
   },
   methods: {
+    toggleForm() {
+      this.visibleForm = !this.visibleForm;
+      api.get("/AnimalRoutes/getAnimals").then((response) => {
+        this.animalsArray = response.data;
+        // console.log(this.animalsArray[0]);
+      });
+      api.get("/ZookeeperRoutes/getZookeepers").then((response) => {
+        this.keepersArray = response.data;
+        // console.log(this.keepersArray[0]);
+      });
+    },
     formatDate(dateString) {
       const date = new Date(dateString);
       const options = { year: "numeric", month: "long", day: "numeric" };
@@ -87,6 +104,8 @@ export default {
       return new Intl.DateTimeFormat("en-US", options).format(utcDate);
     },
     async submitForm() {
+      // console.log(this.newNote, this.selectedAnimal, this.newKeeperID);
+
       adderRoutes.addFeeding(this.newAnimalID, this.newKeeperID, this.newNote);
 
       // console.table(newFeeding);
@@ -100,5 +119,20 @@ export default {
 </script>
 
 <style scoped>
-/* Component-specific styles */
+#container {
+  display: grid;
+
+  gap: 0px 0px;
+}
+
+#feedingContainer {
+  display: grid;
+
+  gap: 0px 0px;
+}
+textarea,
+select {
+  background-color: #f9f9f9;
+  color: #1a1a1a;
+}
 </style>

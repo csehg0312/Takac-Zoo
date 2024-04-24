@@ -21,13 +21,6 @@
         <td>{{ object.YearsOfExperience }} év</td>
       </tr>
     </table>
-    <!-- <table v-if="zookeepers" v-for="object in this.zookeepers.value">
-            
-           <tr>Neve: {{ object.Name }}</tr>
-           <tr>Specializáció: {{ object.Specialization }}</tr>
-           <tr>Tapasztalata: {{ object.YearsOfExperience }} év</tr>
-
-        </table> -->
     <p v-if="!zookeepers">Nem talalhato adat</p>
   </div>
 </template>
@@ -41,15 +34,14 @@ export default {
                     required:true
                 }
             },
-    },
     data() {
-    return {
-      visibleForm: false,
-      newName: "",
-      newSpecialization: "",
-      newYearsOfExperience: "",
-    };
-  },
+      return {
+        visibleForm: false,
+        newName: "",
+        newSpecialization: "",
+        newYearsOfExperience: "",
+      }
+    },
     methods: {
         deleteReq(id) {
           api.delete(`/ZookeeperRoutes/deleteZookeeper/${id}`).then((response) => {
@@ -57,17 +49,33 @@ export default {
           });
         },
         async submitForm() {
-        adderRoutes.addZookeeper(this.newName, this.newSpecialization, this.newYearsOfExperience);
+          adderRoutes.addZookeeper(this.newName, this.newSpecialization, this.newYearsOfExperience);
 
-        // console.table(newZookeeper);
-        this.visibleForm = false;
-        this.newName = "";
-        this.newSpecialization = "";
-        this.newYearsOfExperience = "";
-    },
+          // console.table(newZookeeper);
+          this.visibleForm = false;
+          this.newName = "";
+          this.newSpecialization = "";
+          this.newYearsOfExperience = "";
+      },
     }
+  }
 </script>
 
 <style scoped>
-/* Component-specific styles */
+  #container {
+    display: grid;
+
+    gap: 0px 0px;
+  }
+
+  #visitorsContainer {
+    display: grid;
+
+    gap: 0px 0px;
+  }
+  input,
+  select {
+    background-color: #f9f9f9;
+    color: #1a1a1a;
+  }
 </style>
