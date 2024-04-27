@@ -6,10 +6,10 @@
       <table>
         <tr>
           <td>
-            <b> Diagnózis </b>
+            <b>Diagnózis </b>
           </td>
           <td>
-            <b> Kezelés </b>
+            <b>Kezelés </b>
           </td>
           <td>
             <b>Felírva </b>
