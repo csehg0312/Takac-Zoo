@@ -11,7 +11,6 @@ This project presents a fullstack web application using MongoDB as a database. I
 - **MongoDB Integration**: uses MongoDB to store and manage data.
 - **Fullstack Implementation**: Demonstrates integration of front-end and back-end technologies to ensure a seamless user experience.
 - **RESTful API**: implements RESTful API for communication between front-end and back-end components.
-- **User Authentication**: Provides user authentication and authorization functionality to ensure secure access to the application.
 - **CRUD Operations**: supports CRUD (Create, Read, Update, Delete) operations to manage data within the application.
 
 ## Technologies used
