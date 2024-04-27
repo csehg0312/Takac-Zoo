@@ -101,10 +101,12 @@ export default {
     },
     formatTime(dateString) {
       const date = new Date(dateString);
-      const options = { hour: "2-digit", minute: "2-digit", hour12: true };
-      const utcString = date.toLocaleString("en-US", { timeZone: "UTC" });
-      const utcDate = new Date(utcString);
-      return new Intl.DateTimeFormat("en-US", options).format(utcDate);
+      const options = { hour: "2-digit", minute: "2-digit", hour12: false };
+      const europeString = date.toLocaleString("en-US", {
+        timeZone: "Europe/Bratislava",
+      });
+      const europeDate = new Date(europeString);
+      return new Intl.DateTimeFormat("en-US", options).format(europeDate);
     },
     async submitForm() {
       // console.log(this.newNote, this.selectedAnimal, this.newKeeperID);

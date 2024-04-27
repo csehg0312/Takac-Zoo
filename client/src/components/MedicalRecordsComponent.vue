@@ -94,6 +94,9 @@ export default {
         this.veteritarianArray = response.data;
       });
     },
+
+    //TODO needed to optimize the submitform in routes
+
     async submitForm() {
       adderRoutes.addMedicalRecord(
         this.newAnimalID,

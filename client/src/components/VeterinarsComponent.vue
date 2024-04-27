@@ -23,10 +23,29 @@
         </tr>
       </table>
     </div>
+    <div id="newDataButton">
+      <button @click="toggleForm">
+        {{ visibleForm ? "Bezár" : "Új" }}
+      </button>
+    </div>
+    <form v-if="visibleForm" id="newData" @submit.prevent="submitForm">
+      <label for="nev">Neve: </label
+      ><input id="nev" type="text" v-model="newName" required />
+      <br />
+      <label for="spec">Specializáció: </label
+      ><input id="spec" type="text" v-model="newSpecialization" required />
+      <br />
+      <label for="yoe">Tapasztalat: </label>
+      <input id="yoe" type="number" v-model="newYearsOfExperience" required />
+      <br />
+      <input type="submit" value="Hozzáad" />
+    </form>
   </div>
 </template>
 
 <script>
+import api from "../js/api";
+import adderRoutes from "../js/routes";
 export default {
   name: "VeterinarsComponent",
   props: {
@@ -44,6 +63,11 @@ export default {
     };
   },
   methods: {
+    toggleForm() {
+      this.visibleForm = !this.visibleForm;
+    },
+
+    //TODO needed to optimize the submitform in routes
     async submitForm() {
       adderRoutes.addVeteritarian(
         this.newName,
@@ -55,7 +79,7 @@ export default {
       this.visibleForm = false;
       this.newName = "";
       this.newSpecialization = "";
-      this.newYearsOfExperience = "";
+      this.newYearsOfExperience = 0;
     },
   },
 };

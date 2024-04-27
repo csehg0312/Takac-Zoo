@@ -26,10 +26,29 @@
         </tr>
       </table>
     </div>
+    <div id="newDataButton">
+      <button @click="toggleForm">{{ visibleForm ? "Bezár" : "Új" }}</button>
+    </div>
+    <!-- form start -->
+    <form v-if="visibleForm" id="newData" @submit.prevent="submitForm">
+      <label for="age">Kor </label
+      ><input id="age" type="number" v-model="newAge" required />
+      <br />
+      <label for="ticket">Jegy típusa: </label>
+      <select id="ticket" v-model="newTicketType" required>
+        <option>Felnőtt</option>
+        <option>Diák (14-26)</option>
+        <option>Idős kedvezményes</option>
+        <option>Családi kedvezményes</option>
+      </select>
+      <br />
+      <input type="submit" value="Hozzáad" />
+    </form>
   </div>
 </template>
 
 <script>
+import adderRoutes from "../js/routes";
 export default {
   name: "VisitorsComponent",
   props: {
@@ -46,6 +65,10 @@ export default {
     };
   },
   methods: {
+    toggleForm() {
+      this.visibleForm = !this.visibleForm;
+    },
+
     formatDate(dateString) {
       const date = new Date(dateString);
       const options = { year: "numeric", month: "long", day: "numeric" };
@@ -54,16 +77,18 @@ export default {
     formatTime(dateString) {
       const date = new Date(dateString);
       const options = { hour: "2-digit", minute: "2-digit", hour12: true };
-      const utcString = date.toLocaleString("en-US", { timeZone: "UTC" });
-      const utcDate = new Date(utcString);
-      return new Intl.DateTimeFormat("en-US", options).format(utcDate);
+      const europeString = date.toLocaleString("en-US", {
+        timeZone: "Europe/Bratislava",
+      });
+      const europeDate = new Date(europeString);
+      return new Intl.DateTimeFormat("en-US", options).format(europeDate);
     },
     async submitForm() {
       adderRoutes.addVisitor(this.newAge, this.newTicketType);
 
       // console.table(newVisitor);
       this.visibleForm = false;
-      this.newAge = "";
+      this.newAge = 0;
       this.newTicketType = "";
     },
   },
