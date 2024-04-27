@@ -1,4 +1,58 @@
-# Fullstack MongoDB alkalmazás
+# Fullstack MongoDB application(EN)
+
+This repository contains the source code for the fullstack MongoDB application, which was created as a school project for a course at J. Selye University.
+
+## Overview
+
+This project presents a fullstack web application using MongoDB as a database. It demonstrates the integration of front-end and back-end technologies to create a cohesive and functional system.
+
+## Functions
+
+- **MongoDB Integration**: uses MongoDB to store and manage data.
+- **Fullstack Implementation**: Demonstrates integration of front-end and back-end technologies to ensure a seamless user experience.
+- **RESTful API**: implements RESTful API for communication between front-end and back-end components.
+- **CRUD Operations**: supports CRUD (Create, Read, Update, Delete) operations to manage data within the application.
+
+## Technologies used
+
+- **Frontend**:
+  - HTML
+  - CSS
+  - JavaScript (e.g. React, Angular or Vue.js framework)
+
+- **Backend**:
+  - Node.js
+  - Axios
+
+- **Database**:
+  - MongoDB
+
+## First steps
+
+To run the application locally, follow the steps below:
+
+1. Clone this repository to your local machine.
+2. Make sure you have Node.js and MongoDB installed.
+3. navigate to the project directory in the terminal.
+4. Open the `server` folder in terminal.
+5. Install the dependencies by running the `npm install` command.
+6. Run the server with `npm start`.
+7. Open the `client` folder in terminal.
+8. Install the dependencies by running the `npm install` command.
+9. Run the frontend with `npm run dev`.
+10. Access the application in your web browser at `http://localhost:PORT`, where `PORT` is the configured port number for the application.
+
+## Usage
+
+- After the application is started, it will redirect you to the main page.
+- From here you can navigate between different sections within the application, perform CRUD operations and use the features provided by the system.
+
+## Contributors
+
+- Gábor Cseh [ Github profile ](https://github.com/csehg0312/)
+- Kaszmán Dániel [ Github profile ](https://github.com/danielkaszman)
+
+# Fullstack MongoDB alkalmazás(HU)
 
 Ez a repository tartalmazza a fullstack MongoDB alkalmazás forráskódját, amelyet a J. Selye Egyetem egyik kurzusához készítettünk iskolai projektként.
 
