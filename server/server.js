@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
 
 const AnimalRoutes = require("./Routes/AnimalRoutes");
 const EnclosureRoutes = require("./Routes/EnclosureRoutes");
@@ -30,9 +31,12 @@ app.use("/VeteritarianRoutes", VeteritarianRoutes);
 app.use("/VisitorRoutes", VisitorRoutes);
 app.use("/ZookeeperRoutes", ZookeeperRoutes);
 
+const db_user = process.env.DB_USER;
+const db_pwd = process.env.DB_PASSWORD;
+
 mongoose
   .connect(
-    "mongodb+srv://danikaszman:danikaszman@cluster.soqfcau.mongodb.net/Zoo?retryWrites=true&w=majority&appName=Cluster"
+    `mongodb+srv://${db_user}:${db_pwd}@cluster.soqfcau.mongodb.net/Zoo?retryWrites=true&w=majority&appName=Cluster`
   )
   .then(() => {
     console.log("Connected to MongoDB");
