@@ -8,13 +8,13 @@
       <table>
         <tr>
           <td>
-            <b> Ketrec megnevezése: </b>
+            <b>Ketrec megnevezése: </b>
           </td>
           <td>
-            <b> Mérete: </b>
+            <b>Mérete: </b>
           </td>
           <td>
-            <b> Élőhely típusa: </b>
+            <b>Élőhely típusa: </b>
           </td>
         </tr>
         <tr v-for="object in this.enclosures.value">

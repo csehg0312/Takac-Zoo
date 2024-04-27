@@ -7,16 +7,16 @@
       <table>
         <tr>
           <td>
-            <b> Állatfaj: </b>
+            <b>Állatfaj: </b>
           </td>
           <td>
-            <b> Neve: </b>
+            <b>Neve: </b>
           </td>
           <td>
-            <b> Kora: </b>
+            <b>Kora: </b>
           </td>
           <td>
-            <b> Neme: </b>
+            <b>Neme: </b>
           </td>
         </tr>
         <tr v-for="object in this.animals.value">

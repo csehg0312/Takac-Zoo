@@ -9,16 +9,16 @@
       <table>
         <tr>
           <td>
-            <b> Etetés időpontja (Nap) </b>
+            <b>Etetés időpontja (Nap): </b>
           </td>
           <td>
-            <b> Etetés időpontja (Óra) </b>
+            <b>Etetés időpontja (Óra): </b>
           </td>
           <td>
-            <b> Etetési jegyzet </b>
+            <b>Etetési jegyzet: </b>
           </td>
-          <td><b>Ki etette</b></td>
-          <td><b>Kit etetett</b></td>
+          <td><b>Ki etette:</b></td>
+          <td><b>Kit etetett:</b></td>
         </tr>
         <tr v-for="object in this.feedings.value">
           <td>{{ formatDate(object.FeedingDate) }}</td>

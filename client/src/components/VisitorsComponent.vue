@@ -6,16 +6,16 @@
       <table>
         <tr>
           <td>
-            <b> Látogatás időpontja (Nap) </b>
+            <b>Látogatás időpontja (Nap): </b>
           </td>
           <td>
-            <b> Látogatás időpontja (Óra) </b>
+            <b>Látogatás időpontja (Óra): </b>
           </td>
           <td>
-            <b> Kor </b>
+            <b>Kor: </b>
           </td>
           <td>
-            <b> Jegy típusa </b>
+            <b>Jegy típusa: </b>
           </td>
         </tr>
         <tr v-for="object in this.visitors.value">

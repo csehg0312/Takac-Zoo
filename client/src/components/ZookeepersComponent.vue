@@ -5,13 +5,13 @@
     <table>
       <tr>
         <td>
-          <b> Neve: </b>
+          <b>Neve: </b>
         </td>
         <td>
-          <b> Specializáció: </b>
+          <b>Specializáció: </b>
         </td>
         <td>
-          <b> Tapasztalata: </b>
+          <b>Tapasztalata: </b>
         </td>
       </tr>
       <tr v-for="object in this.zookeepers.value">
@@ -21,8 +21,6 @@
       </tr>
     </table>
     <p v-if="!zookeepers">Nem talalhato adat</p>
-    
-
   </div>
 </template>
 
