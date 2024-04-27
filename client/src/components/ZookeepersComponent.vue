@@ -44,8 +44,6 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { useDialog } from "vue-final-modal";
 import api from "../js/api";
 import adderRoutes from "../js/routes";
 export default {
