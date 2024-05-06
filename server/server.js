@@ -21,7 +21,7 @@ app.use(
   })
 );
 
-//app.use(express.static("../client/build"));
+app.use(express.static("./dist"));
 
 app.use("/AnimalRoutes", AnimalRoutes);
 app.use("/EnclosureRoutes", EnclosureRoutes);
@@ -45,7 +45,7 @@ mongoose
     console.error("Error connecting to MongoDB:", error);
   });
 
-  const PORT = 3001
+const PORT = 3001;
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port: ${PORT}`);
 });
