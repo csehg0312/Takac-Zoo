@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import api from "../js/api";
 import adderRoutes from "../js/routes";
 export default {
   name: "VisitorsComponent",

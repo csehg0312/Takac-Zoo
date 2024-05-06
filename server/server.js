@@ -15,7 +15,7 @@ const ZookeeperRoutes = require("./Routes/ZookeeperRoutes");
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["*"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
@@ -45,6 +45,7 @@ mongoose
     console.error("Error connecting to MongoDB:", error);
   });
 
-app.listen(3001, () => {
-  console.log("Server is running...");
+  const PORT = 3001
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
