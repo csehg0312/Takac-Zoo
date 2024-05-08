@@ -1,4 +1,5 @@
 const express = require("express");
+const forever = require("forever");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -13,13 +14,15 @@ const VisitorRoutes = require("./Routes/VisitorRoutes");
 const ZookeeperRoutes = require("./Routes/ZookeeperRoutes");
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["*"],
-    methods: ["POST", "GET", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: ["*"],
+//     methods: ["POST", "GET", "PUT", "DELETE"],
+//     credentials: true,
+//   })
+// );
+
+app.use(cors());
 
 app.use(express.static("./dist"));
 
