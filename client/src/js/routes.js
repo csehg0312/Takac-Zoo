@@ -1,11 +1,12 @@
 // src/routes.js
-import api from "./api";
+// import api from "./api";
+import axios from 'axios';
 
 const adderRoutes = {
   addAnimal: (name, age, species, gender) => {
     // console.log('Fetching animals...')
     console.log(name, age, species, gender);
-    return api.post("/AnimalRoutes/addAnimal", {
+    return axios.post("/AnimalRoutes/addAnimal", {
       species,
       name,
       age,
@@ -14,14 +15,14 @@ const adderRoutes = {
   },
   addEnclosure: (name, size, type) => {
     console.log(name, size, type);
-    return api.post("/EnclosureRoutes/addEnclosure", {
+    return axios.post("/EnclosureRoutes/addEnclosure", {
       name,
       size,
       type,
     });
   },
   addFeeding: (animalID, keeperID, note) => {
-    return api.post("/FeedingRoutes/addFeeding", {
+    return axios.post("/FeedingRoutes/addFeeding", {
       animalID,
       keeperID,
       note,
@@ -34,7 +35,7 @@ const adderRoutes = {
     treatment,
     medication
   ) => {
-    return api.post("/MedicalRecordRoutes/addMedicalRecord", {
+    return axios.post("/MedicalRecordRoutes/addMedicalRecord", {
       animalID,
       veteritarianID,
       diagnosis,
@@ -43,20 +44,20 @@ const adderRoutes = {
     });
   },
   addVeterinar: (name, specialization, yearsOfExperience) => {
-    return api.post("/VeteritarianRoutes/addVeteritarian", {
+    return axios.post("/VeteritarianRoutes/addVeteritarian", {
       name,
       specialization,
       yearsOfExperience,
     });
   },
   addVisitor: (age, ticketType) => {
-    return api.post("/VisitorRoutes/addVisitor", {
+    return axios.post("/VisitorRoutes/addVisitor", {
       age,
       ticketType,
     });
   },
   addZookeeper: (name, specialization, yearsOfExperience) => {
-    return api.post("/ZookeeperRoutes/addZookeeper", {
+    return axios.post("/ZookeeperRoutes/addZookeeper", {
       name,
       specialization,
       yearsOfExperience,
