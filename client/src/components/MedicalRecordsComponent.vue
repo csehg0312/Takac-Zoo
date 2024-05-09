@@ -2,7 +2,7 @@
 <template>
   <h2>Orvosi kivizsgálások</h2>
   <div id="container">
-    <div id="medicalrecContainer">
+    <div id="medicalrecContainer" style="display: flex;">
       <table>
         <tr>
           <td>
@@ -19,6 +19,18 @@
           <td>{{ object.Diagnosis }}</td>
           <td>{{ object.Treatment }}</td>
           <td>{{ object.Medication }}</td>
+        </tr>
+      </table>
+      <table>
+        <td><b>Ki volt a kezelő </b></td>
+        <tr v-for="object in this.medical_records.value">
+          <td>{{ getVetName(this.medical_records.value, this.veterinars.value, object.VeteritarianID) }}</td>
+        </tr>
+      </table>
+      <table>
+        <td><b>Melyik drágaságot </b></td>
+        <tr v-for="object in this.medical_records.value">
+          <td>{{ getAnimalName(this.medical_records.value, this.animals.value, object.AnimalID) }}</td>
         </tr>
       </table>
     </div>
@@ -70,6 +82,14 @@ export default {
       type: Object,
       required: true,
     },
+    veterinars: {
+      type: Object,
+      required:true,
+    },
+    animals: {
+      type:Object,
+      required:true,
+    }
   },
   data() {
     return {
@@ -95,7 +115,28 @@ export default {
       });
     },
 
-    //TODO needed to optimize the submitform in routes
+    getAnimalName(medrecords, animals, animalId) {
+      const record = medrecords.find(record => record.AnimalID === animalId);
+      if (record) {
+        const animal = animals.find(animal => animal._id === record.AnimalID);
+        if (animal) {
+          return animal.Name;
+        }
+      }
+      console.log("null");
+      return null;
+    },
+    getVetName(medrecords, veterinars, vetID) {
+      const record = medrecords.find(record => record.VeteritarianID === vetID);
+      if (record) {
+        const vet = veterinars.find(vet => vet._id === record.VeteritarianID);
+        if (vet) {
+          return vet.Name;
+        }
+      }
+      return null;
+    },
+
 
     async submitForm() {
       console.table(adderRoutes.addMedicalRecord(

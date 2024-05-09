@@ -5,7 +5,7 @@
   </div>
 
   <div id="container">
-    <div id="feedingContainer">
+    <div id="feedingContainer" style="display: flex;">
       <table>
         <tr>
           <td>
@@ -17,14 +17,24 @@
           <td>
             <b>Etetési jegyzet: </b>
           </td>
-          <td><b>Ki etette:</b></td>
-          <td><b>Kit etetett:</b></td>
+          
         </tr>
         <tr v-for="object in this.feedings.value">
           <td>{{ formatDate(object.FeedingDate) }}</td>
           <td>{{ formatTime(object.FeedingDate) }}</td>
           <td>{{ object.FeedingNote }}</td>
-          <td>{{}}</td>
+        </tr>
+      </table>
+      <table>
+        <td><b>Ki etette:</b></td>
+        <tr v-for="object in this.feedings.value">
+          <td>{{ getKeeperName(this.feedings.value, this.zookeepers.value, object.KeeperID) }}</td>
+        </tr>
+      </table>
+      <table>
+        <td><b>Kit etetett:</b></td>
+        <tr v-for="object in this.feedings.value">
+          <td>{{ getAnimalName(this.feedings.value, this.animals.value, object.AnimalID) }}</td>
         </tr>
       </table>
     </div>
@@ -69,6 +79,14 @@ export default {
       type: Object,
       required: true,
     },
+    animals: {
+      type:Object,
+      required:true
+    },
+    zookeepers: {
+      type: Object,
+      required:true
+    },
   },
   data() {
     return {
@@ -107,6 +125,27 @@ export default {
       });
       const europeDate = new Date(europeString);
       return new Intl.DateTimeFormat("en-US", options).format(europeDate);
+    },
+
+    getAnimalName(feedings, animals, animalId) {
+      const feeding = feedings.find(feeding => feeding.AnimalID === animalId);
+      if (feeding) {
+        const animal = animals.find(animal => animal._id === feeding.AnimalID);
+        if (animal) {
+          return animal.Name;
+        }
+      }
+      return null;
+    },
+    getKeeperName(feedings, keepers, keeperID) {
+      const feeding = feedings.find(feeding => feeding.KeeperID === keeperID);
+      if (feeding) {
+        const keeper = keepers.find(keeper => keeper._id === feeding.KeeperID);
+        if (keeper) {
+          return keeper.Name;
+        }
+      }
+      return null;
     },
     async submitForm() {
       // console.log(this.newNote, this.selectedAnimal, this.newKeeperID);

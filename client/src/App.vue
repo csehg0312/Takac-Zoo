@@ -86,9 +86,9 @@ const props = defineProps({
   <div id="getContainer">
     <AnimalsComponent :animals="items.animals" class="element" />
     <EnclosuresComponent :enclosures="items.enclosures" class="element" />
-    <FeedingsComponent :feedings="items.feedings" class="element" />
+    <FeedingsComponent :feedings="items.feedings" :animals="items.animals" :zookeepers="items.zookeepers" class="element" />
     <MedicalRecordsComponent
-      :medical_records="items.medical_records"
+      :medical_records="items.medical_records" :veterinars="items.veterinars" :animals="items.animals"
       class="element"
     />
     <VeterinarsComponent :veterinars="items.veterinars" class="element" />
