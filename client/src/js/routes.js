@@ -43,7 +43,7 @@ const adderRoutes = {
       medication,
     });
   },
-  addVeterinar: (name, specialization, yearsOfExperience) => {
+  addVeteritarian: (name, specialization, yearsOfExperience) => {
     return axios.post("/VeteritarianRoutes/addVeteritarian", {
       name,
       specialization,
