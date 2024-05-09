@@ -35,7 +35,7 @@ const adderRoutes = {
     treatment,
     medication
   ) => {
-    return axios.post("/MedicalRecordRoutes/addMedicalRecord", {
+    return axios.post("/MedicalRecordsRoutes/addMedicalRecord", {
       animalID,
       veteritarianID,
       diagnosis,

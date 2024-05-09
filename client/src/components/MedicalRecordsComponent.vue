@@ -98,13 +98,14 @@ export default {
     //TODO needed to optimize the submitform in routes
 
     async submitForm() {
-      adderRoutes.addMedicalRecord(
+      console.table(adderRoutes.addMedicalRecord(
         this.newAnimalID,
         this.newVeteritarianID,
         this.newDiagnosis,
         this.newTreatment,
         this.newMedication
-      );
+      )
+      )
 
       // console.table(newMedicalRecord);
       this.visibleForm = false;

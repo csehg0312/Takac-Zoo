@@ -10,7 +10,7 @@ router.post("/addMedicalRecord", async (req, res) => {
     Treatment: req.body.treatment,
     Medication: req.body.medication,
   });
-
+  console.log(newMedicalRecord);
   await newMedicalRecord.save();
 
   res.sendStatus(200);
