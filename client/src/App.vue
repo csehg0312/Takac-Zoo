@@ -1,5 +1,5 @@
 <script setup>
-import axios from 'axios'
+// import axios from 'axios'
 import AnimalsComponent from "./components/AnimalsComponent.vue";
 import EnclosuresComponent from "./components/EnclosuresComponent.vue";
 import FeedingsComponent from "./components/FeedingsComponent.vue";
@@ -8,7 +8,7 @@ import VeterinarsComponent from "./components/VeterinarsComponent.vue";
 import VisitorsComponent from "./components/VisitorsComponent.vue";
 import ZookeepersComponent from "./components/ZookeepersComponent.vue";
 import { ref } from "vue";
-// import api from "./js/api";
+import api from "./js/api";
 impor
 
 const items = {
@@ -22,30 +22,30 @@ const items = {
 };
 
 async function fetchData() {
-  const animalResponse = await axios.get("/AnimalRoutes/getAnimals");
+  const animalResponse = await api.get("/AnimalRoutes/getAnimals", {mode:'no-cors'});
   items.animals.value = animalResponse.data;
   // console.table(items.animals.value)
 
-  const enclosureResponse = await axios.get("/EnclosureRoutes/getEnclosures");
+  const enclosureResponse = await api.get("/EnclosureRoutes/getEnclosures", {mode:'no-cors'});
   items.enclosures.value = enclosureResponse.data;
 
-  const feedingResponse = await axios.get("/FeedingRoutes/getFeedings");
+  const feedingResponse = await api.get("/FeedingRoutes/getFeedings");
   items.feedings.value = feedingResponse.data;
 
-  const medicalRecordsResponse = await axios.get(
+  const medicalRecordsResponse = await api.get(
     "/MedicalRecordsRoutes/getMedicalRecords"
   );
   items.medical_records.value = medicalRecordsResponse.data;
 
-  const veterinarResponse = await axios.get(
+  const veterinarResponse = await api.get(
     "/VeteritarianRoutes/getVeteritarians"
   );
   items.veterinars.value = veterinarResponse.data;
 
-  const visitorResponse = await axios.get("/VisitorRoutes/getVisitors");
+  const visitorResponse = await api.get("/VisitorRoutes/getVisitors");
   items.visitors.value = visitorResponse.data;
 
-  const zookeeperResponse = await axios.get("/ZookeeperRoutes/getZookeepers");
+  const zookeeperResponse = await api.get("/ZookeeperRoutes/getZookeepers");
   items.zookeepers.value = zookeeperResponse.data;
 }
 
