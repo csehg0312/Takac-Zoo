@@ -9,7 +9,6 @@ import VisitorsComponent from "./components/VisitorsComponent.vue";
 import ZookeepersComponent from "./components/ZookeepersComponent.vue";
 import { ref } from "vue";
 import api from "./js/api";
-impor
 
 const items = {
   animals: ref([]),
